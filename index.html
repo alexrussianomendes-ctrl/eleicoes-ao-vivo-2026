@@ -1,5 +1,5 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Eleições EUA 2026: apuração ao vivo</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>US Elections 2026: live results</title>
 <style>
 :root{--bg:#F4F1EA;--card:#FBF9F4;--tx:#22252A;--tx2:#5E636B;--bd:#D9D4C8;--D:#3D6BA8;--R:#B5473F;--vazio:#E6E1D6}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
@@ -13,57 +13,57 @@ main{max-width:1000px;margin:0 auto;padding:16px}h1{font-size:1.5rem;margin:.2em
 .prev{border:2px dashed var(--tx2)}.selo{display:inline-block;background:var(--tx);color:var(--bg);font-size:.75rem;padding:2px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:.05em}
 footer{font-size:.85rem;color:var(--tx2)}a{color:var(--D)}.alerta{color:var(--R)}
 </style></head><body><main>
-<h1>Eleições dos EUA 2026: apuração ao vivo</h1>
-<div class="sub">Última atualização da página: <span id="hora">carregando…</span> · Dados da fonte de: <span id="hfonte">sem dado</span> · <span id="hger"></span><br>Os dados chegam com alguns minutos de atraso (ciclo da fonte e cache de até ~5 min). <span id="status" class="alerta"></span></div>
-<section class="card"><h2>Bancada (resultados chamados)</h2><div class="grid" id="bancada">carregando…</div></section>
-<section class="card"><h2>Mapa</h2><div class="tabs"><button id="bs" class="on">Senado</button> <button id="bc">Câmara</button></div>
-<svg id="mapa" viewBox="0 0 1100 800" role="img" aria-label="Mapa dos EUA em blocos"></svg><div id="dica" class="sub">Toque ou passe o mouse num estado para ver o % apurado.</div></section>
-<section class="card prev"><span class="selo">Previsão, não resultado</span><h2 style="margin-top:.5em">Previsão</h2><div id="previsao">carregando…</div></section>
-<footer class="card">Dados de resultado: <a href="https://civicapi.org" target="_blank" rel="noopener">civicapi.org</a>. Fonte não oficial; os números podem ter erros e chegar com alguns minutos de atraso. A fonte informa só o total por disputa. Uma disputa só conta na bancada quando a fonte marca um vencedor. A previsão é separada, não é resultado e não usa estes dados como garantia.</footer>
+<h1>US Elections 2026: live results</h1>
+<div class="sub">Page last refreshed: <span id="hora">loading…</span> · Source data as of: <span id="hfonte">no data</span> · <span id="hger"></span><br>Data arrives a few minutes late (source update cycle plus caching of up to ~5 min). <span id="status" class="alerta"></span></div>
+<section class="card"><h2>Seat count (called races)</h2><div class="grid" id="bancada">loading…</div></section>
+<section class="card"><h2>Map</h2><div class="tabs"><button id="bs" class="on">Senate</button> <button id="bc">House</button></div>
+<svg id="mapa" viewBox="0 0 1100 800" role="img" aria-label="Tile map of the US states"></svg><div id="dica" class="sub">Tap or hover over a state to see the share of the expected vote counted.</div></section>
+<section class="card prev"><span class="selo">Forecast, not a result</span><h2 style="margin-top:.5em">Forecast</h2><div id="previsao">loading…</div></section>
+<footer class="card">Results data: <a href="https://civicapi.org" target="_blank" rel="noopener">civicapi.org</a> (unofficial source). Figures may contain errors and arrive a few minutes late. The source reports only race-level totals. A race counts toward the seat count only once the source declares a winner. The forecast is separate: it is not a result.</footer>
 </main><script>
-const TILES={AK:[0,0,"Alasca"],ME:[10,0,"Maine"],WI:[5,1,"Wisconsin"],VT:[9,1,"Vermont"],NH:[10,1,"New Hampshire"],WA:[0,2,"Washington"],ID:[1,2,"Idaho"],MT:[2,2,"Montana"],ND:[3,2,"Dakota do Norte"],MN:[4,2,"Minnesota"],IL:[5,2,"Illinois"],MI:[6,2,"Michigan"],NY:[8,2,"Nova York"],MA:[9,2,"Massachusetts"],OR:[0,3,"Oregon"],NV:[1,3,"Nevada"],WY:[2,3,"Wyoming"],SD:[3,3,"Dakota do Sul"],IA:[4,3,"Iowa"],IN:[5,3,"Indiana"],OH:[6,3,"Ohio"],PA:[7,3,"Pensilvânia"],NJ:[8,3,"Nova Jersey"],CT:[9,3,"Connecticut"],RI:[10,3,"Rhode Island"],CA:[0,4,"Califórnia"],UT:[1,4,"Utah"],CO:[2,4,"Colorado"],NE:[3,4,"Nebraska"],MO:[4,4,"Missouri"],KY:[5,4,"Kentucky"],WV:[6,4,"Virgínia Ocidental"],VA:[7,4,"Virgínia"],MD:[8,4,"Maryland"],DE:[9,4,"Delaware"],AZ:[1,5,"Arizona"],NM:[2,5,"Novo México"],KS:[3,5,"Kansas"],AR:[4,5,"Arkansas"],TN:[5,5,"Tennessee"],NC:[6,5,"Carolina do Norte"],SC:[7,5,"Carolina do Sul"],DC:[8,5,"Distrito de Columbia"],OK:[3,6,"Oklahoma"],LA:[4,6,"Louisiana"],MS:[5,6,"Mississippi"],AL:[6,6,"Alabama"],GA:[7,6,"Geórgia"],HI:[0,7,"Havaí"],TX:[3,7,"Texas"],FL:[8,7,"Flórida"]};
+const TILES={AK:[0,0,"Alaska"],ME:[10,0,"Maine"],WI:[5,1,"Wisconsin"],VT:[9,1,"Vermont"],NH:[10,1,"New Hampshire"],WA:[0,2,"Washington"],ID:[1,2,"Idaho"],MT:[2,2,"Montana"],ND:[3,2,"North Dakota"],MN:[4,2,"Minnesota"],IL:[5,2,"Illinois"],MI:[6,2,"Michigan"],NY:[8,2,"New York"],MA:[9,2,"Massachusetts"],OR:[0,3,"Oregon"],NV:[1,3,"Nevada"],WY:[2,3,"Wyoming"],SD:[3,3,"South Dakota"],IA:[4,3,"Iowa"],IN:[5,3,"Indiana"],OH:[6,3,"Ohio"],PA:[7,3,"Pennsylvania"],NJ:[8,3,"New Jersey"],CT:[9,3,"Connecticut"],RI:[10,3,"Rhode Island"],CA:[0,4,"California"],UT:[1,4,"Utah"],CO:[2,4,"Colorado"],NE:[3,4,"Nebraska"],MO:[4,4,"Missouri"],KY:[5,4,"Kentucky"],WV:[6,4,"West Virginia"],VA:[7,4,"Virginia"],MD:[8,4,"Maryland"],DE:[9,4,"Delaware"],AZ:[1,5,"Arizona"],NM:[2,5,"New Mexico"],KS:[3,5,"Kansas"],AR:[4,5,"Arkansas"],TN:[5,5,"Tennessee"],NC:[6,5,"North Carolina"],SC:[7,5,"South Carolina"],DC:[8,5,"District of Columbia"],OK:[3,6,"Oklahoma"],LA:[4,6,"Louisiana"],MS:[5,6,"Mississippi"],AL:[6,6,"Alabama"],GA:[7,6,"Georgia"],HI:[0,7,"Hawaii"],TX:[3,7,"Texas"],FL:[8,7,"Florida"]};
 const CADEIRAS={AL:7,AK:1,AZ:9,AR:4,CA:52,CO:8,CT:5,DE:1,FL:28,GA:14,HI:2,ID:2,IL:17,IN:9,IA:4,KS:4,KY:6,LA:6,ME:2,MD:8,MA:9,MI:13,MN:8,MS:4,MO:8,MT:2,NE:3,NV:4,NH:2,NJ:12,NM:3,NY:26,NC:14,ND:1,OH:15,OK:5,OR:6,PA:17,RI:2,SC:7,SD:1,TN:9,TX:38,UT:4,VT:1,VA:11,WA:10,WV:2,WI:8,WY:1};
 const SEN_EM_DISPUTA=["AL","AK","AR","CO","DE","FL","GA","ID","IL","IA","KS","KY","LA","ME","MA","MI","MN","MS","MT","NE","NH","NJ","NM","NC","OH","OK","OR","RI","SC","SD","TN","TX","VA","WV","WY"];
 const FORA_D=34,FORA_R=31,CD="#3D6BA8",CR="#B5473F",VAZIO="#E6E1D6";
 let vista="senado",RES=null;const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const fmtH=iso=>{if(!iso)return"sem dado";const d=new Date(iso);return isNaN(d)?"sem dado":d.toLocaleString("pt-BR",{timeZone:"America/Sao_Paulo",day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit"})+" (horário de Brasília)"};
-const pct=v=>v==null?"sem dado":v.toLocaleString("pt-BR",{maximumFractionDigits:1})+"%";
-const num=v=>v==null?"sem dado":Math.round(v).toLocaleString("pt-BR");
+const fmtH=iso=>{if(!iso)return"no data";const d=new Date(iso);return isNaN(d)?"no data":d.toLocaleString("en-US",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit",second:"2-digit",timeZoneName:"short"})+" (your local time)"};
+const pct=v=>v==null?"no data":v.toLocaleString("en-US",{maximumFractionDigits:1})+"%";
+const num=v=>v==null?"no data":Math.round(v).toLocaleString("en-US");
 function porEstado(){const S={},C={};if(!RES)return{S,C};for(const d of RES.disputas||[]){if(d.casa==="senado"){(S[d.estado]=S[d.estado]||[]).push(d)}else{(C[d.estado]=C[d.estado]||[]).push(d)}}return{S,C}}
 function barra(D,R,tot){return`<div class="barra"><div style="width:${100*D/tot}%;background:${CD}"></div><div style="flex:1"></div><div style="width:${100*R/tot}%;background:${CR}"></div><div class="m"></div></div>`}
-function bancada(){const{S,C}=porEstado();if(!RES){$("bancada").textContent="sem dado";return}
+function bancada(){const{S,C}=porEstado();if(!RES){$("bancada").textContent="no data";return}
 let sD=0,sR=0,sO=0;Object.values(S).flat().forEach(d=>{d.chamada==="D"?sD++:d.chamada==="R"?sR++:d.chamada==="outro"?sO++:0});
 let cD=0,cR=0,cO=0;Object.values(C).flat().forEach(d=>{d.chamada==="D"?cD++:d.chamada==="R"?cR++:d.chamada==="outro"?cO++:0});
 const nS=Object.values(S).flat().length,nC=Object.values(C).flat().length;
-$("bancada").innerHTML=`<div class="casa"><div>Senado (maioria 51)</div><b class="d">${FORA_D+sD}</b> D · <b class="r">${FORA_R+sR}</b> R${barra(FORA_D+sD,FORA_R+sR,100)}<div class="sub">${FORA_D} D e ${FORA_R} R fora de disputa + ${sD} D e ${sR} R chamadas${sO?` + ${sO} outros`:""}. ${nS-sD-sR-sO} de ${nS} disputas sem chamada.</div></div>
-<div class="casa"><div>Câmara (maioria 218)</div><b class="d">${cD}</b> D · <b class="r">${cR}</b> R${barra(cD,cR,435)}<div class="sub">Cadeiras chamadas${cO?` (+ ${cO} outros)`:""}. ${435-cD-cR-cO} de 435 sem chamada${nC!==435?` (a fonte trouxe ${nC} disputas)`:""}.</div></div>`}
+$("bancada").innerHTML=`<div class="casa"><div>Senate (51 for majority)</div><b class="d">${FORA_D+sD}</b> D · <b class="r">${FORA_R+sR}</b> R${barra(FORA_D+sD,FORA_R+sR,100)}<div class="sub">${FORA_D} D and ${FORA_R} R not up this year + ${sD} D and ${sR} R called${sO?` + ${sO} other`:""}. ${nS-sD-sR-sO} of ${nS} races not yet called.</div></div>
+<div class="casa"><div>House (218 for majority)</div><b class="d">${cD}</b> D · <b class="r">${cR}</b> R${barra(cD,cR,435)}<div class="sub">Seats called${cO?` (+ ${cO} other)`:""}. ${435-cD-cR-cO} of 435 not yet called${nC!==435?` (source returned ${nC} races)`:""}.</div></div>`}
 function infoEstado(uf){const{S,C}=porEstado();const nome=TILES[uf][2];
-if(vista==="senado"){if(!SEN_EM_DISPUTA.includes(uf))return{on:false,cor:"none",sub:"",dica:nome+": sem eleição para o Senado em 2026"};
-const ds=S[uf]||[];if(!ds.length)return{on:true,cor:VAZIO,sub:"",dica:nome+": sem dado"};
+if(vista==="senado"){if(!SEN_EM_DISPUTA.includes(uf))return{on:false,cor:"none",sub:"",dica:nome+": no Senate race in 2026"};
+const ds=S[uf]||[];if(!ds.length)return{on:true,cor:VAZIO,sub:"",dica:nome+": no data"};
 const ch=ds.map(d=>d.chamada).filter(Boolean),d=ds[0];const cor=ch.includes("D")&&!ch.includes("R")?CD:ch.includes("R")&&!ch.includes("D")?CR:VAZIO;
-return{on:true,cor,feito:cor!==VAZIO,sub:uf==="FL"||uf==="OH"?"especial":"",dica:ds.map(d=>`${nome} (${d.disputa}): ${d.chamada==="D"?"democrata chamado":d.chamada==="R"?"republicano chamado":d.chamada==="outro"?"outro chamado":"sem chamada"} · apurado ${pct(d.pct_apurado)} · D ${num(d.votos_D)} · R ${num(d.votos_R)}`).join(" | ")}}
-const n=CADEIRAS[uf];if(n==null)return{on:false,cor:"none",sub:"",dica:nome+": sem voto na Câmara"};
+return{on:true,cor,feito:cor!==VAZIO,sub:uf==="FL"||uf==="OH"?"special":"",dica:ds.map(d=>`${nome} (${d.disputa}): ${d.chamada==="D"?"called for Democrat":d.chamada==="R"?"called for Republican":d.chamada==="outro"?"called for other":"not called"} · counted ${pct(d.pct_apurado)} · D ${num(d.votos_D)} · R ${num(d.votos_R)}`).join(" | ")}}
+const n=CADEIRAS[uf];if(n==null)return{on:false,cor:"none",sub:"",dica:nome+": no voting House seat"};
 const ds=C[uf]||[];const D=ds.filter(d=>d.chamada==="D").length,R=ds.filter(d=>d.chamada==="R").length;
 const ps=ds.map(d=>d.pct_apurado).filter(v=>v!=null);const pm=ps.length?ps.reduce((a,b)=>a+b,0)/ps.length:null;
 const cor=D+R===0?VAZIO:D>R?CD:R>D?CR:"#8A7F6E";
-return{on:true,cor,feito:D+R>0,sub:D+R?`${D}–${R} de ${n}`:String(n),dica:`${nome}: ${D} D e ${R} R chamadas de ${n} · apurado médio dos distritos ${pct(pm)}${ds.length?"":" (sem dado)"}`}}
+return{on:true,cor,feito:D+R>0,sub:D+R?`${D}–${R} of ${n}`:String(n),dica:`${nome}: ${D} D and ${R} R called of ${n} · average counted across districts ${pct(pm)}${ds.length?"":" (no data)"}`}}
 function mapa(){let h="";for(const uf in TILES){const[c,l]=TILES[uf],x=c*100,y=l*100,e=infoEstado(uf);const tinta=e.feito?"#fff":e.on?"#22252A":"#8C8F94";
 h+=`<g data-uf="${uf}" opacity="${e.on?1:.45}" style="cursor:pointer"><title>${esc(e.dica)}</title><rect x="${x}" y="${y}" width="94" height="94" rx="10" fill="${e.cor}" stroke="#C9C3B5" stroke-width="2"/><text x="${x+47}" y="${y+(e.sub?44:56)}" text-anchor="middle" font-size="30" fill="${tinta}">${uf}</text>${e.sub?`<text x="${x+47}" y="${y+74}" text-anchor="middle" font-size="20" fill="${tinta}">${esc(e.sub)}</text>`:""}</g>`}
-h+=`<rect x="900" y="560" width="26" height="26" rx="5" fill="${CD}"/><text x="940" y="581" font-size="22" fill="#5E636B">Democratas</text><rect x="900" y="600" width="26" height="26" rx="5" fill="${CR}"/><text x="940" y="621" font-size="22" fill="#5E636B">Republicanos</text><rect x="900" y="640" width="26" height="26" rx="5" fill="${VAZIO}" stroke="#C9C3B5" stroke-width="2"/><text x="940" y="661" font-size="22" fill="#5E636B">Sem chamada</text>`;
+h+=`<rect x="900" y="560" width="26" height="26" rx="5" fill="${CD}"/><text x="940" y="581" font-size="22" fill="#5E636B">Democrats</text><rect x="900" y="600" width="26" height="26" rx="5" fill="${CR}"/><text x="940" y="621" font-size="22" fill="#5E636B">Republicans</text><rect x="900" y="640" width="26" height="26" rx="5" fill="${VAZIO}" stroke="#C9C3B5" stroke-width="2"/><text x="940" y="661" font-size="22" fill="#5E636B">Not called</text>`;
 $("mapa").innerHTML=h;$("mapa").querySelectorAll("g[data-uf]").forEach(g=>{const f=()=>$("dica").textContent=infoEstado(g.dataset.uf).dica;g.addEventListener("mouseenter",f);g.addEventListener("click",f)})}
-function intervalo(c){return Array.isArray(c&&c.intervalo)&&c.intervalo.length===2?` <span class="sub">(intervalo D: ${esc(c.intervalo[0])}–${esc(c.intervalo[1])})</span>`:""}
-function previsao(p){if(!p||p.ativo!==true){$("previsao").innerHTML=`<p>Ainda não há previsão publicada. Esta área mostra só a previsão de um modelo quando ela for liberada.</p>`;return}
-const linha=(n,c)=>c&&c.D!=null&&c.R!=null?`<p><b>${n}:</b> <span class="d">${esc(c.D)} D</span> · <span class="r">${esc(c.R)} R</span>${intervalo(c)}</p>`:`<p><b>${n}:</b> sem dado</p>`;
-$("previsao").innerHTML=`<p class="sub">Modelo: ${esc(p.rotulo_modelo||"sem dado")} · atualizada em ${fmtH(p.atualizado_em)}</p>${linha("Senado",p.senado)}${linha("Câmara",p.camara)}${p.texto?`<p>${esc(p.texto)}</p>`:""}${(p.avisos||[]).length?`<ul>${p.avisos.map(a=>`<li>${esc(a)}</li>`).join("")}</ul>`:""}<p class="sub">Isto é uma previsão, não um resultado.</p>`}
+function intervalo(c){return Array.isArray(c&&c.intervalo)&&c.intervalo.length===2?` <span class="sub">(range D: ${esc(c.intervalo[0])}–${esc(c.intervalo[1])})</span>`:""}
+function previsao(p){if(!p||p.ativo!==true){$("previsao").innerHTML=`<p>No forecast has been published yet. This panel shows a model forecast only once one is released.</p>`;return}
+const linha=(n,c)=>c&&c.D!=null&&c.R!=null?`<p><b>${n}:</b> <span class="d">${esc(c.D)} D</span> · <span class="r">${esc(c.R)} R</span>${intervalo(c)}</p>`:`<p><b>${n}:</b> no data</p>`;
+$("previsao").innerHTML=`<p class="sub">Model: ${esc(p.rotulo_modelo||"no data")} · updated ${fmtH(p.atualizado_em)}</p>${linha("Senate",p.senado)}${linha("House",p.camara)}${p.texto?`<p>${esc(p.texto)}</p>`:""}${(p.avisos||[]).length?`<ul>${p.avisos.map(a=>`<li>${esc(a)}</li>`).join("")}</ul>`:""}<p class="sub">This is a forecast, not a result.</p>`}
 const RAW="https://raw.githubusercontent.com/alexrussianomendes-ctrl/eleicoes-ao-vivo-2026/dados/";
 const LOCAL=/^(localhost|127\.0\.0\.1)$/.test(location.hostname)||location.protocol==="file:";
 async function tenta(u){try{const r=await fetch(u+"?t="+Math.floor(Date.now()/60000),{cache:"no-store"});if(!r.ok)throw 0;return await r.json()}catch(e){return undefined}}
 async function pega(n){const bases=LOCAL?["",RAW]:[RAW,""];for(const b of bases){const j=await tenta(b+n);if(j!==undefined)return j}return undefined}
-async function ciclo(){const r=await pega("resultados.json");if(r){RES=r;$("hfonte").textContent=fmtH(r.dados_da_fonte_em);$("hger").textContent="publicado com mudança em "+fmtH(r.gerado_em);$("status").textContent=r.status_fonte&&r.status_fonte!=="ok"?"· a fonte está com falha agora; mostrando os últimos dados válidos":""}else if(!RES){$("status").textContent="· resultados sem dado"}
-const p=await pega("previsao.json");if(p!==undefined)previsao(p);else $("previsao").textContent="sem dado";
+async function ciclo(){const r=await pega("resultados.json");if(r){RES=r;$("hfonte").textContent=fmtH(r.dados_da_fonte_em);$("hger").textContent="last changed "+fmtH(r.gerado_em);$("status").textContent=r.status_fonte&&r.status_fonte!=="ok"?"· the source is failing right now; showing the last valid data":""}else if(!RES){$("status").textContent="· results: no data"}
+const p=await pega("previsao.json");if(p!==undefined)previsao(p);else $("previsao").textContent="no data";
 $("hora").textContent=fmtH(new Date().toISOString());bancada();mapa()}
-$("bs").onclick=()=>{vista="senado";$("bs").className="on";$("bc").className="";mapa();$("dica").textContent="Toque ou passe o mouse num estado para ver o % apurado."};
-$("bc").onclick=()=>{vista="camara";$("bc").className="on";$("bs").className="";mapa();$("dica").textContent="Toque ou passe o mouse num estado para ver o % apurado."};
+$("bs").onclick=()=>{vista="senado";$("bs").className="on";$("bc").className="";mapa();$("dica").textContent="Tap or hover over a state to see the share of the expected vote counted."};
+$("bc").onclick=()=>{vista="camara";$("bc").className="on";$("bs").className="";mapa();$("dica").textContent="Tap or hover over a state to see the share of the expected vote counted."};
 ciclo();setInterval(ciclo,30000);
 </script></body></html>
