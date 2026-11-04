@@ -60,7 +60,7 @@ const RAW="https://raw.githubusercontent.com/alexrussianomendes-ctrl/eleicoes-ao
 const LOCAL=/^(localhost|127\.0\.0\.1)$/.test(location.hostname)||location.protocol==="file:";
 async function tenta(u){try{const r=await fetch(u+"?t="+Math.floor(Date.now()/60000),{cache:"no-store"});if(!r.ok)throw 0;return await r.json()}catch(e){return undefined}}
 async function pega(n){const bases=LOCAL?["",RAW]:[RAW,""];for(const b of bases){const j=await tenta(b+n);if(j!==undefined)return j}return undefined}
-async function ciclo(){const r=await pega("resultados.json");if(r){RES=r;$("hfonte").textContent=fmtH(r.dados_da_fonte_em);$("hger").textContent="arquivo gerado em "+fmtH(r.gerado_em);$("status").textContent=r.status_fonte&&r.status_fonte!=="ok"?"· a fonte está com falha agora; mostrando os últimos dados válidos":""}else if(!RES){$("status").textContent="· resultados sem dado"}
+async function ciclo(){const r=await pega("resultados.json");if(r){RES=r;$("hfonte").textContent=fmtH(r.dados_da_fonte_em);$("hger").textContent="publicado com mudança em "+fmtH(r.gerado_em);$("status").textContent=r.status_fonte&&r.status_fonte!=="ok"?"· a fonte está com falha agora; mostrando os últimos dados válidos":""}else if(!RES){$("status").textContent="· resultados sem dado"}
 const p=await pega("previsao.json");if(p!==undefined)previsao(p);else $("previsao").textContent="sem dado";
 $("hora").textContent=fmtH(new Date().toISOString());bancada();mapa()}
 $("bs").onclick=()=>{vista="senado";$("bs").className="on";$("bc").className="";mapa();$("dica").textContent="Toque ou passe o mouse num estado para ver o % apurado."};
