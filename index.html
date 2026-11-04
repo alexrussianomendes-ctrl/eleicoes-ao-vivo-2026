@@ -44,7 +44,7 @@ h+=`<rect x="900" y="600" width="26" height="26" rx="5" fill="${CD}"/><text x="9
 $("mapa").innerHTML=h;$("mapa").querySelectorAll("g[data-uf]").forEach(g=>{const f=()=>$("dica").textContent=infoEstado(g.dataset.uf).dica;g.addEventListener("mouseenter",f);g.addEventListener("click",f)})}
 function previsao(p){const el=$("previsao");if(!p||p.ativo!==true){el.style.display="none";return}el.style.display="";
 const L=(n,c)=>c&&c.D!=null&&c.R!=null?`<p><b>${n}</b> <span class="d">${esc(c.D)} D</span> · <span class="r">${esc(c.R)} R</span>${Array.isArray(c.intervalo)&&c.intervalo.length===2?` (${esc(c.intervalo[0])}–${esc(c.intervalo[1])})`:""}</p>`:`<p><b>${n}</b> —</p>`;
-el.innerHTML=`<div class="lbl">${esc(p.rotulo_modelo||"")}${hhmm(p.atualizado_em)?" · "+hhmm(p.atualizado_em):""}</div>${L("Senate",p.senado)}${L("House",p.camara)}`}
+el.innerHTML=`<div class="lbl">Projection${hhmm(p.atualizado_em)?" · "+hhmm(p.atualizado_em):""}</div>${L("Senate",p.senado)}${L("House",p.camara)}`}
 const RAW="https://raw.githubusercontent.com/alexrussianomendes-ctrl/eleicoes-ao-vivo-2026/dados/";
 const LOCAL=/^(localhost|127\.0\.0\.1)$/.test(location.hostname)||location.protocol==="file:";
 async function tenta(u){try{const r=await fetch(u+"?t="+Math.floor(Date.now()/60000),{cache:"no-store"});if(!r.ok)throw 0;return await r.json()}catch(e){return undefined}}
