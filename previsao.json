@@ -1,21 +1,21 @@
 {
   "ativo": true,
   "rotulo_modelo": "Projection",
-  "atualizado_em": "2026-11-03T22:29:17.653898-03:00",
+  "atualizado_em": "2026-11-04T03:24:32.589554-03:00",
   "senado": {
-    "D": 54,
-    "R": 46,
+    "D": 55,
+    "R": 45,
     "intervalo": [
-      53,
-      55
+      54,
+      56
     ]
   },
   "camara": {
-    "D": 249,
-    "R": 186,
+    "D": 255,
+    "R": 180,
     "intervalo": [
-      241,
-      257
+      247,
+      263
     ]
   },
   "texto": "",
